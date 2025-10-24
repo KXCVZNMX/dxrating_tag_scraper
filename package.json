@@ -4,7 +4,8 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "start": "ts-node src/index.ts"
   },
   "dependencies": {
     "dotenv": "^17.2.3",
@@ -13,7 +14,8 @@
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
     "@types/mongodb": "^4.0.6",
-    "typescript": "^5.5.3"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   },
   "private": true
 }

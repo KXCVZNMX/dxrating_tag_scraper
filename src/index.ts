@@ -2,12 +2,10 @@ import dotenv from 'dotenv';
 import {MongoClient} from 'mongodb'
 import {SongWTags, TagBunch} from "./types";
 
-dotenv.config({path: "../.env"});
+dotenv.config({path: "./.env"});
 
 const getTags = async () => {
     const url = "https://derrakuma.dxrating.net/functions/v1/combined-tags";
-
-    console.log(process.env.API_KEY)
 
     const headers = {
         "Host": "derrakuma.dxrating.net",
