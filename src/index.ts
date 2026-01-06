@@ -84,8 +84,8 @@ const processTags = (tags: TagBunch) => {
     try {
         client = new MongoClient(uri);
         await client.connect();
-        const db = client.db("SongTag");
-        const collection = db.collection("tags");
+        const db = client.db("test");
+        const collection = db.collection("songTags");
         await collection.drop().catch(() => {});
         await collection.insertMany(processedTags);
     } catch (e) {
