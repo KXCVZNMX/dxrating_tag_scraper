@@ -2,15 +2,17 @@ import dotenv from 'dotenv';
 import {MongoClient} from 'mongodb'
 import {SongWTags, TagBunch} from "./types";
 
-dotenv.config({path: "./.env"});
+dotenv.config({path: "../.env"});
 
 const getTags = async () => {
     const url = "https://derrakuma.dxrating.net/functions/v1/combined-tags";
 
+    console.log(process.env.AUTHORIZATION)
+
     const headers = {
         "Host": "derrakuma.dxrating.net",
         "Sec-Ch-Ua-Platform": "\"macOS\"",
-        "Authorization": `Bearer ${process.env.API_KEY ?? ""}`,
+        "Authorization": `Bearer ${process.env.AUTHORIZATION ?? ""}`,
         "Accept-Language": "en-GB,en;q=0.9",
         "Sec-Ch-Ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
         "Sec-Ch-Ua-Mobile": "?0",
