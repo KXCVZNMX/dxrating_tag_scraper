@@ -5,33 +5,31 @@ import {SongWTags, TagBunch} from "./types";
 dotenv.config({path: "./.env"});
 
 const getTags = async () => {
-    const url = "https://derrakuma.dxrating.net/functions/v1/combined-tags";
+    const url = "https://miruku.dxrating.net/api/v1/tags";
 
     console.log(process.env.AUTHORIZATION)
-
-    const headers = {
-        "Host": "derrakuma.dxrating.net",
-        "Sec-Ch-Ua-Platform": "\"macOS\"",
-        "Authorization": `Bearer ${process.env.AUTHORIZATION ?? ""}`,
-        "Accept-Language": "en-GB,en;q=0.9",
-        "Sec-Ch-Ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
-        "Sec-Ch-Ua-Mobile": "?0",
-        "X-Client-Info": "supabase-js-web/2.49.1",
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
-        "Apikey": process.env.API_KEY ?? "",
-        "Accept": "*/*",
-        "Origin": "https://dxrating.net",
-        "Sec-Fetch-Site": "same-site",
-        "Sec-Fetch-Mode": "cors",
-        "Sec-Fetch-Dest": "empty",
-        "Referer": "https://dxrating.net/"
-    };
+    // const headers = {
+    //     "Host": "derrakuma.dxrating.net",
+    //     "Sec-Ch-Ua-Platform": "\"macOS\"",
+    //     "Authorization": `Bearer ${process.env.AUTHORIZATION ?? ""}`,
+    //     "Accept-Language": "en-GB,en;q=0.9",
+    //     "Sec-Ch-Ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+    //     "Sec-Ch-Ua-Mobile": "?0",
+    //     "X-Client-Info": "supabase-js-web/2.49.1",
+    //     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+    //     "Apikey": process.env.API_KEY ?? "",
+    //     "Accept": "*/*",
+    //     "Origin": "https://dxrating.net",
+    //     "Sec-Fetch-Site": "same-site",
+    //     "Sec-Fetch-Mode": "cors",
+    //     "Sec-Fetch-Dest": "empty",
+    //     "Referer": "https://dxrating.net/"
+    // };
 
     try {
         const res = await fetch(url, {
-            method: "POST",
-            headers,
-            body: ""
+            method: "GET",
+            // headers,
         });
 
         if (!res.ok) {
@@ -39,6 +37,9 @@ const getTags = async () => {
         }
 
         const data: TagBunch = await res.json();
+
+        console.log(data);
+
         return data;
     } catch (e) {
         console.error(e);
